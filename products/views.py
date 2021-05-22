@@ -8,12 +8,14 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_207_MULTI_STATUS, HTTP_305_USE_PROXY
 from rest_framework.views import APIView
 import random
+from .producer import publish
 
 # Create your views here.
 class ProductViewSet(viewsets.ViewSet):
     def list(self, request): #/api/products
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
+        publish()
         return Response(serializer.data)
     def create(self, request):    #/api/products
         serializer = ProductSerializer(data=request.data)
