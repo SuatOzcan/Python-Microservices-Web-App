@@ -1,4 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, json, jsonify
+from flask.wrappers import Request
+import requests
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -31,6 +33,11 @@ class ProductUser(db.Model):
 @app.route('/api/products')
 def index():
     return jsonify(Product.query.all())
+
+@app.route('/api/products/<int:id>/like', methods=['POST'])
+def like(id):
+    req = requests.get('http://docker.for.mac.localhost:8000/api/user')
+    return jsonify(req.json())
 
 if __name__ == '__main__':
     app.run(debug=True, host= '0.0.0.0')
