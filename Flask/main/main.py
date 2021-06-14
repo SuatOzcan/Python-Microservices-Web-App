@@ -37,7 +37,11 @@ def index():
 @app.route('/api/products/<int:id>/like', methods=['POST'])
 def like(id):
     req = requests.get('http://docker.for.mac.localhost:8000/api/user')
-    return jsonify(req.json())
+    json = req.json()
+      
+    return jsonify({
+        'message':'success'
+    })
 
 if __name__ == '__main__':
     app.run(debug=True, host= '0.0.0.0')
