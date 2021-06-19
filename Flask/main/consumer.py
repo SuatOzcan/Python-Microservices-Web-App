@@ -1,5 +1,7 @@
 
 from main import Product, db
+
+#from products.models import Product
 import pika, json
 
 
