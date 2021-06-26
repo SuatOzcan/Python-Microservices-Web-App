@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Wrapper from "./Wrapper";
 import { Product } from "../Interfaces/product";
 import { async } from "q";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,12 @@ const Products = () => {
 
     return(
         <Wrapper>
+      <div className="pt-3 pb-2 mb-3 border-bottom">
+        <div className="btn-toolbar mb-2 mb-md-0">
+          <Link to='/admin/products/create' className="btn btn-sm bt-outline-secondary">Add</Link>
+        </div>
+      </div>  
+      
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
